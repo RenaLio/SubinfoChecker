@@ -4,6 +4,10 @@ import requests
 import telebot
 
 API_KEY ="<YOUR BOT TOKEN>"
+
+# import os
+# API_KEY = os.getenv('API_KEY')
+
 bot = telebot.TeleBot(API_KEY)
 
 def convert_time_to_str(time):
