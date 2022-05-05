@@ -90,13 +90,13 @@ def greet(message):
   bot.reply_to(message,atext)
 # bot.polling()
       
-# @bot.message_handler(content_types=["start"])
-# def start(message): 
-#     bot.send_message(message.chat.id, "本机器人可以帮助你查询订阅信息，欢迎使用")
+@bot.message_handler(content_types=["start"])
+def start(message): 
+    bot.send_message(message.chat.id, "本机器人可以帮助你查询订阅信息，欢迎使用")
 
-# @bot.message_handler(content_types=["help"])
-# def help(message): 
-#     bot.send_message(message.chat.id, "直接发送订阅连接即可使用")
+@bot.message_handler(content_types=["help"])
+def help(message): 
+    bot.send_message(message.chat.id, "直接发送'/subinfo 订阅连接'即可使用")
 
 
 # @bot.message_handler(content_types=["text"])
