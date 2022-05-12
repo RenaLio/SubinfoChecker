@@ -41,7 +41,7 @@ python3 subinfo2.py
 
 ## 其他
 
-### subinfo1.py
+### subinfo.py
 
 > 推荐个人使用，直接发送`订阅链接`就可以返回结果
 
