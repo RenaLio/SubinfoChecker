@@ -48,3 +48,7 @@ python3 subinfo2.py
 ### subinfo2.py
 
 > `/subinfo URL`
+
+## 感谢
+
+subinfo的主要代码来源自`telegram-PGM`模块
