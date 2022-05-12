@@ -34,7 +34,7 @@ pip3 install -r requirements.txt
 直接使用Python命令调用Bot即可
 
 ```
-python3 subinfo.py
+python3 subinfo2.py
 ```
 
 建议使用`screen`、`systemd`、`PM2`等工具将Bot挂在后台运行。
