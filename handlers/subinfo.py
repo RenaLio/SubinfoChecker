@@ -4,8 +4,6 @@ import requests
 import telebot
 from datetime import datetime
 
-API_KEY ="<YOUR BOT TOKEN>"
-bot = telebot.TeleBot(API_KEY)
 
 def convert_time_to_str(time):
     #时间数字转化成字符串，不够10的前面补个0
@@ -22,6 +20,25 @@ def sec_to_data(y):
     h=convert_time_to_str(h)
     d=convert_time_to_str(d)
     return d + "天" + h+'小时'
+
+def StrOfSize(size):
+    def strofsize(integer, remainder, level):
+        if integer >= 1024:
+            remainder = integer % 1024
+            integer //= 1024
+            level += 1
+            return strofsize(integer, remainder, level)
+        elif integer < 0:
+            integer = 0
+            return strofsize(integer, remainder, level)
+        else:
+            return integer, remainder, level
+
+    units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
+    integer, remainder, level = strofsize(size, 0, 0)
+    if level+1 > len(units):
+        level = -1
+    return ( '{}.{:>03d} {}'.format(integer, remainder, units[level]) )
 
 def StrOfSize(size):
     def strofsize(integer, remainder, level):
@@ -83,21 +100,3 @@ def subinfo(url):
         return (final_output)
     except:
         return ('参数错误')
-
-@bot.message_handler(content_types=["text"])
-def repeat_all_messages(message): 
-    atext=subinfo(message.text)
-    bot.send_message(message.chat.id, atext)
-    
-@bot.message_handler(commands=['ping'])
-def get_dalay(message):
-  start = datetime.now()
-  # s1 = time.time()
-  # msg_delay2 = s1-message.date
-  message =  bot.reply_to(message,"pong~",disable_notification=True)
-  end = datetime.now()
-  msg_delay = (end-start).microseconds/1000
-  bot.edit_message_text(f"pong~ | 消息延迟: `{msg_delay:.2f}ms`",message.chat.id,message.id,parse_mode='Markdown')
-
-if __name__ == '__main__':
-     bot.polling(none_stop=True)

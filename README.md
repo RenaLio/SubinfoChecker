@@ -4,7 +4,7 @@
 
 [@Thesubinfo2_bot](https://t.me/Thesubinfo2_bot)
 
-## 安装教程
+## 配置
 
 先去botfather获取bot token，然后在vps内使用一下命令安装bot
 
@@ -34,10 +34,58 @@ pip3 install -r requirements.txt
 直接使用Python命令调用Bot即可
 
 ```
-python3 subinfo2.py
+python3 bot.py -t 123456:xxxxxxxx
 ```
 
+`123456:xxxxxxxxxxx`为bot token
+
 建议使用`screen`、`systemd`、`PM2`等工具将Bot挂在后台运行。
+
+## 安装方式
+
+### 持久化
+
+- Systemed
+
+  ```
+  bash install.sh
+  ```
+
+  查看状态
+
+  ```
+  systemctl status subbot
+  ```
+
+  查看日志
+
+  ```
+  journalctl -u subbot
+  ```
+
+  启动 
+
+  ```
+  systemctl start subbot
+  ```
+
+  停止 
+
+  ```
+  systemctl stop subbot
+  ```
+
+  重启 
+
+  ```
+  systemctl restart subbot
+  ```
+
+  杀死所有子进程
+
+  ```
+  systemctl kill subbot
+  ```
 
 ## 其他
 
